@@ -21,9 +21,11 @@ specifiers:
   eslint: ^8.0.1
   eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^4.0.0
+  gentype: ^4.3.0
   jest: ^27.2.5
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
+  rescript: ^9.1.4
   rimraf: ^3.0.2
   rxjs: ^7.2.0
   source-map-support: ^0.5.20
@@ -43,6 +45,7 @@ dependencies:
   class-transformer: 0.5.1
   class-validator: 0.13.2
   reflect-metadata: 0.1.13
+  rescript: 9.1.4
   rimraf: 3.0.2
   rxjs: 7.5.5
 
@@ -60,6 +63,7 @@ devDependencies:
   eslint: 8.12.0
   eslint-config-prettier: 8.5.0_eslint@8.12.0
   eslint-plugin-prettier: 4.0.0_b253a92c95b42c3296c682f11cccb3bd
+  gentype: 4.3.0
   jest: 27.5.1_ts-node@10.7.0
   prettier: 2.6.1
   source-map-support: 0.5.21
@@ -2930,6 +2934,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
+  /gentype/4.3.0:
+    resolution: {integrity: sha512-lqkc1ZS/Iog4uslRD4De47OV54Hu61vEBsirMKxRlgHIRvm8u6RqsdKxJ7JdJdrzmtKgPNvq1He69SozzW+6dQ==}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+
   /get-caller-file/2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -4612,6 +4622,12 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /rescript/9.1.4:
+    resolution: {integrity: sha512-aXANK4IqecJzdnDpJUsU6pxMViCR5ogAxzuqS0mOr8TloMnzAjJFu63fjD6LCkWrKAhlMkFFzQvVQYaAaVkFXw==}
+    hasBin: true
+    requiresBuild: true
+    dev: false
 
   /resolve-cwd/3.0.0:
     resolution: {integrity: sha512-OrZaX2Mb+rJCpH/6CpSqt9xFVpN++x01XnN2ie9g6P5/3xelLAkXWVADpdz1IHD/KFfEXyE6V0U01OQ3UO2rEg==}

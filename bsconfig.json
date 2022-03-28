@@ -1,0 +1,22 @@
+{
+  "name": "cqrs-app",
+  "version": "0.1.0",
+  "sources": {
+    "dir" : "src",
+    "subdirs" : true
+  },
+  "package-specs": {
+    "in-source": true,
+    "module": "es6"
+  },
+  "suffix": ".bs.js",
+  "gentypeconfig": {
+    "language": "typescript",
+    "generatedFileExtension": ".gen.ts",
+    "module": "es6",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  }
+}

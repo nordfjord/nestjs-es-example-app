@@ -1,5 +1,6 @@
 import {
   ErrorType,
+  EventData,
   EventStoreDBClient,
   ExpectedRevision,
   jsonEvent,
@@ -30,26 +31,31 @@ type Ctx = { $correlationId?: string; $causationId?: string; userId?: string }
 type Event = { type: string; data: any }
 
 export const createCommandHandler =
-  <S, E extends Event, C>(
+  <S, E, C>(
     client: EventStoreDBClient,
     getStreamName: (command: C) => string,
     decider: Decider<S, E, C>,
+    encode: (e: E) => Event = (e) => e as any,
+    decode: (e: Event) => E = (e) => e as any,
   ) =>
   async (command: C, context?: Ctx) => {
     const streamName = getStreamName(command)
     let state = decider.initialState
     let revision: ExpectedRevision = NO_STREAM
     for await (const event of handleEmpty(client.readStream(streamName))) {
-      state = decider.evolve(state, event as any as E)
+      state = decider.evolve(state, decode(event))
       revision = event.revision
     }
-    const newEvents = decider.decide(state, command).map((event) =>
-      jsonEvent({
-        type: event.type,
-        data: event.data,
+
+    const newEvents = decider.decide(state, command).map((event) => {
+      const encoded = encode(event)
+      return jsonEvent({
+        type: encoded.type,
+        data: encoded.data,
         metadata: context,
-      }),
-    )
+      })
+    })
+
     await client.appendToStream(streamName, newEvents, {
       expectedRevision: revision,
     })
